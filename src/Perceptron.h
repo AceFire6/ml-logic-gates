@@ -9,7 +9,7 @@ namespace MLLJET001 {
             std::vector<std::vector<float>> trainingData;
             int threshold;
         public:
-            Perceptron(std::vector<std::vector<float>> trainingData) : threshold(1), weights(2, 0.0F) {
+            Perceptron(std::vector<std::vector<float>> trainingData) : threshold(1), weights(3, 0.0F) {
                 this->trainingData.resize(trainingData.size());
                 for (int i = 0; i < trainingData.size(); ++i) {
                     this->trainingData[i] = std::move(trainingData[i]);

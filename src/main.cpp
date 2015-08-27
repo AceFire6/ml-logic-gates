@@ -36,6 +36,7 @@ MLLJET001::Perceptron doTraining(string name, int iterations, float learningRate
     cout << "\n\n" << name << endl;
     cout << "W1: " << perceptron.weights[0] << endl;
     cout << "W2: " << perceptron.weights[1] << endl;
+    cout << "W3: " << perceptron.weights[2] << endl;
 
     int in1 = 0;
     int in2 = 0;
@@ -53,10 +54,36 @@ MLLJET001::Perceptron doTraining(string name, int iterations, float learningRate
     return perceptron;
 }
 
+int computeXOR(float x0, float x1, MLLJET001::Perceptron AND, MLLJET001::Perceptron OR, MLLJET001::Perceptron NAND) {
+    int NANDout = NAND.compute(x0, x1);
+    int ORout = OR.compute(x0, x1);
+    return AND.compute(NANDout, ORout);
+}
+
 int main() {
-    //doTraining("AND");
-    //doTraining("OR");
-    doTraining("NAND", 1000, 0.1);
+    MLLJET001::Perceptron AND = doTraining("AND", 1000, 0.1);
+    MLLJET001::Perceptron OR = doTraining("OR", 1000, 0.1);
+    MLLJET001::Perceptron NAND = doTraining("NAND", 1000, 0.1);
+
+    cout << "Perceptrons trained!" << endl;
+
+    float x0, x1;
+
+    while (true) {
+        cout << "Enter XOR test data" << endl;
+        cout << "Enter x0: ";
+        cin >> x0;
+        cout << "Enter x1: ";
+        cin >> x1;
+
+        cout << computeXOR(x0, x1, AND, OR, NAND) << endl;
+        char answer;
+        cout << "Test again?(y/n) ";
+        cin >> answer;
+        if (answer == 'n' || answer == 'N') {
+            break;
+        }
+    }
 
     return 0;
 }

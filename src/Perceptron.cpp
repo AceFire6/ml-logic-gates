@@ -16,7 +16,7 @@ namespace MLLJET001 {
                 std::cout << "In2: " << in2 << std::endl;
                 std::cout << "Target: " << target << std::endl;
 
-                float input_sum = (in1 * weights[0]) + (in2 * weights[1]);
+                float input_sum = (in1 * weights[0]) + (in2 * weights[1]) + (1 * weights[2]);
 
                 if (input_sum > threshold) {
                     output = 1;
@@ -25,16 +25,19 @@ namespace MLLJET001 {
                 std::cout << "Old Weights:" << std::endl;
                 std::cout << "W1: " << weights[0] << std::endl;
                 std::cout << "W2: " << weights[1] << std::endl;
+                std::cout << "W3: " << weights[2] << std::endl;
 
                 if (output != target) {
                     errors += 1;
                     weights[0] += learningRate * (target - output) * in1;
                     weights[1] += learningRate * (target - output) * in2;
+                    weights[2] += learningRate * (target - output) * 1;
                 }
 
                 std::cout << "New Weights:" << std::endl;
                 std::cout << "W1: " << weights[0] << std::endl;
                 std::cout << "W2: " << weights[1] << std::endl;
+                std::cout << "W3: " << weights[2] << std::endl;
             }
             std::cout << "Errors: " << errors << std::endl;
             if (errors == 0) {
@@ -44,7 +47,7 @@ namespace MLLJET001 {
     }
 
     int Perceptron::compute(float in1, float in2) {
-        float input_sum = (in1 * weights[0]) + (in2 * weights[1]);
+        float input_sum = (in1 * weights[0]) + (in2 * weights[1]) + weights[2];
         return ((input_sum > threshold) ? 1 : 0);
     }
 };
