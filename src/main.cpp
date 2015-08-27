@@ -24,7 +24,6 @@ std::vector<std::vector<float>> getTrainingData(string fileName) {
             }
             trainingData.push_back(data);
         }
-        cout << "TD SIZE: " << trainingData.size() << endl;
     } else {
         std::cout << "Couldn't open file: " << fileName << std::endl;
     }
@@ -38,8 +37,8 @@ std::vector<std::vector<float>> getTrainingData(string fileName) {
  */
 MLLJET001::Perceptron doTraining(string name, int iterations, float learningRate) {
     MLLJET001::Perceptron perceptron(getTrainingData("training_" + name + ".txt"));
+    cout << endl << name << endl;
     perceptron.trainPerceptron(iterations, learningRate);
-    cout << "\n\n" << name << endl;
     cout << "W1: " << perceptron.weights[0] << endl;
     cout << "W2: " << perceptron.weights[1] << endl;
     cout << "W3: " << perceptron.weights[2] << endl;
@@ -75,7 +74,7 @@ int main() {
     MLLJET001::Perceptron OR = doTraining("OR", 1000, 0.1);
     MLLJET001::Perceptron NAND = doTraining("NAND", 1000, 0.1);
 
-    cout << "Perceptrons trained!" << endl;
+    cout << "Perceptrons trained!" << endl << endl;
 
     float x0, x1;
 

@@ -15,10 +15,10 @@ namespace MLLJET001 {
                 int target = (int)data[2];
                 int output = 0;
 
-                std::cout << "Inputs:" << std::endl;
-                std::cout << "In1: " << in1 << std::endl;
-                std::cout << "In2: " << in2 << std::endl;
-                std::cout << "Target: " << target << std::endl;
+//                std::cout << "Inputs:" << std::endl;
+//                std::cout << "In1: " << in1 << std::endl;
+//                std::cout << "In2: " << in2 << std::endl;
+//                std::cout << "Target: " << target << std::endl;
 
                 float input_sum = (in1 * weights[0]) + (in2 * weights[1]) + (1 * weights[2]);
 
@@ -26,10 +26,10 @@ namespace MLLJET001 {
                     output = 1;
                 }
 
-                std::cout << "Old Weights:" << std::endl;
-                std::cout << "W1: " << weights[0] << std::endl;
-                std::cout << "W2: " << weights[1] << std::endl;
-                std::cout << "W3: " << weights[2] << std::endl;
+//                std::cout << "Old Weights:" << std::endl;
+//                std::cout << "W1: " << weights[0] << std::endl;
+//                std::cout << "W2: " << weights[1] << std::endl;
+//                std::cout << "W3: " << weights[2] << std::endl;
 
                 if (output != target) {
                     errors += 1;
@@ -38,13 +38,14 @@ namespace MLLJET001 {
                     weights[2] += learningRate * (target - output) * 1;
                 }
 
-                std::cout << "New Weights:" << std::endl;
-                std::cout << "W1: " << weights[0] << std::endl;
-                std::cout << "W2: " << weights[1] << std::endl;
-                std::cout << "W3: " << weights[2] << std::endl;
+//                std::cout << "New Weights:" << std::endl;
+//                std::cout << "W1: " << weights[0] << std::endl;
+//                std::cout << "W2: " << weights[1] << std::endl;
+//                std::cout << "W3: " << weights[2] << std::endl;
             }
-            std::cout << "Errors: " << errors << std::endl;
+//            std::cout << "Errors: " << errors << std::endl;
             if (errors == 0) {
+                std::cout << "Iterations: " << i+1 << std::endl;
                 break;
             }
         }
