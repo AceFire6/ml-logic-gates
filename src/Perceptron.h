@@ -22,9 +22,18 @@ namespace MLLJET001 {
                 }
                 trainingData.clear();
             }
+            // Initialized with 3 weights. 2 inputs and 1 bias
             std::vector<float> weights;
 
+           /**
+             * Using the training data the perceptron was initialized with
+             * it trains it. It does iterations passes over the training data.
+             */
             void trainPerceptron(int iterations, float learningRate);
+           /**
+             * Computes the output of the perceptron with the
+             * given inputs.
+             */
             int compute(float in1, float in2);
     };
 }

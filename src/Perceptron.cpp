@@ -2,6 +2,10 @@
 #include "Perceptron.h"
 
 namespace MLLJET001 {
+    /**
+     * Using the training data the perceptron was initialized with
+     * it trains it. It does iterations passes over the training data.
+     */
     void Perceptron::trainPerceptron(int iterations, float learningRate) {
         for (int i = 0; i < iterations; ++i) {
             int errors = 0;
@@ -46,6 +50,10 @@ namespace MLLJET001 {
         }
     }
 
+    /**
+     * Computes the output of the perceptron with the
+     * given inputs.
+     */
     int Perceptron::compute(float in1, float in2) {
         float input_sum = (in1 * weights[0]) + (in2 * weights[1]) + weights[2];
         return ((input_sum > threshold) ? 1 : 0);

@@ -5,7 +5,10 @@
 
 using namespace std;
 
-
+/**
+ * Read in training data from file and return a vector of float
+ * vectors.
+ */
 std::vector<std::vector<float>> getTrainingData(string fileName) {
     std::ifstream infile(fileName);
     std::vector<std::vector<float>> trainingData;
@@ -30,6 +33,9 @@ std::vector<std::vector<float>> getTrainingData(string fileName) {
     return trainingData;
 }
 
+/**
+ * Create the perceptron and read in its training data then train it.
+ */
 MLLJET001::Perceptron doTraining(string name, int iterations, float learningRate) {
     MLLJET001::Perceptron perceptron(getTrainingData("training_" + name + ".txt"));
     perceptron.trainPerceptron(iterations, learningRate);
@@ -54,6 +60,10 @@ MLLJET001::Perceptron doTraining(string name, int iterations, float learningRate
     return perceptron;
 }
 
+/**
+ * Connects the perceptrons correctly to create the XOR network.
+ * Gets the output from the network and returns it.
+ */
 int computeXOR(float x0, float x1, MLLJET001::Perceptron AND, MLLJET001::Perceptron OR, MLLJET001::Perceptron NAND) {
     int NANDout = NAND.compute(x0, x1);
     int ORout = OR.compute(x0, x1);
